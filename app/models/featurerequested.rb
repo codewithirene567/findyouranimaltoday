@@ -1,0 +1,3 @@
+class Featurerequested < ApplicationRecord
+    
+end
