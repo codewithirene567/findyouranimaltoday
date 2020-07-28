@@ -1,5 +1,5 @@
 class Animal < ApplicationRecord
     belongs_to :user
-    has_many :featurerequesteds
-    has_many :users, through: :featurerequesteds
+    has_many :reasons
+    has_many :users, through: :reasons
 end
