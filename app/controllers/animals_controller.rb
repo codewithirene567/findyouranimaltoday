@@ -25,7 +25,7 @@ class AnimalsController < ApplicationController
         redirect_to animal_path(animal)
     end
     def destroy
-        animal.delete(animal_params)
+        Animal.find(params[:id]).destroy
         redirect_to root_path
     end
     private

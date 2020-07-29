@@ -4,10 +4,10 @@
 
 <%= link_to "Edit this animal", edit_animal_path %>
 
+<%= button_to "Delete Animal", animal_path(@animal), method: :delete %>
+<h1> " link to index page in animals view" </h1>
+<%= link_to "Click here to see all animals ever created", animals_path %><br><br>
 
-<%= link_to "Delete", animal_path(@animal), data: { method: :delete } %>
-<h1> "click here to see all animals ever created link to index page in animals view" </h1>
-
-<h1> "Make a new animal with a new reason link" </h1>
+<%= link_to "Make a new animal", new_animal_path %><br><br>
 
 <%= link_to "Log Out", '/' %>
