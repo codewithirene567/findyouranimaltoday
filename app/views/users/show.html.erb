@@ -2,9 +2,13 @@
 <h1> "for each animal EDIT this animal and its reason" </h1>
 <h1> "for each animal DELETE this animal and its reason" </h1>
 
-<%= link_to "Edit this animal", edit_animal_path %>
+<% @user.animals.each do |animal| %>
 
-<%= button_to "Delete Animal", animal_path(@animal), method: :delete %>
+    <%= link_to "Edit this animal", edit_animal_path(animal) %>
+    
+    <%= button_to "Delete Animal", animal_path(animal), method: :delete %>
+    <% end %>
+
 <h1> " link to index page in animals view" </h1>
 <%= link_to "Click here to see all animals ever created", animals_path %><br><br>
 
