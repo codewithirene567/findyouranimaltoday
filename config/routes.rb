@@ -5,5 +5,8 @@ Rails.application.routes.draw do
   resources :reasons, only: [:new, :create, :index] 
 end
 
+resources :users, only: [:new, :create, :show]
+resources :sessions, only: [:create, :destroy]
+
 end
 
