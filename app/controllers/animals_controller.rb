@@ -28,6 +28,6 @@ class AnimalsController < ApplicationController
     end
     private
     def animal_params
-        params.require(:animal).permit(:name, :reason)
+        params.require(:animal).permit(:name, reason_attributes: [:comment])
     end
 end

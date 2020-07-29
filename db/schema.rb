@@ -10,21 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_29_145752) do
+ActiveRecord::Schema.define(version: 2020_07_29_161953) do
 
   create_table "animals", force: :cascade do |t|
     t.string "name"
-    t.string "reason"
   end
 
   create_table "reasons", force: :cascade do |t|
     t.integer "user_id"
     t.integer "animal_id"
+    t.text "comment"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "password"
     t.string "password_digest"
   end
 
