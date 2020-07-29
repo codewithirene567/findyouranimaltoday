@@ -23,7 +23,7 @@ class AnimalsController < ApplicationController
         redirect_to animal_path(animal)
     end
     def destroy
-        animal.delete(params[:animal_id])
+        animal.delete(animal_params)
         redirect_to root_path
     end
     private
