@@ -6,16 +6,18 @@ class AnimalsController < ApplicationController
         @animal = Animal.new
     end
     def create
-       animal = Animal.create(animal_params)
-       redirect_to animal_path(animal)
+       @animal = Animal.create(animal_params)
+       #binding.pry
+       redirect_to animal_path(:id)
     end
     def show
         @animal = Animal.find_by(id: params[:id])
-        @reason = @animal.reason.build(user_id: current_user.id)
+       # @reason = @animal.reason.build(user_id: current_user.id)
+        # animal GET    /animals/:id(.:format)             animals#show
     end
     def edit
         @animal = Animal.find_by(id: params[:id])
-        @reason = @animal.reasons.build(user_id: current_user.id)
+        #@reason = @animal.reasons.build(user_id: current_user.id)
     end
     def update
         animal = Animal.find_by(id: params[:id])
