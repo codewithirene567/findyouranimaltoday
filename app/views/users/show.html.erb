@@ -1,7 +1,7 @@
 <h1> "Here are all of your animals so far" </h1>
 <h1> "for each animal EDIT this animal and its reason" </h1>
 <h1> "for each animal DELETE this animal and its reason" </h1>
-
+<%= @name %>
 <% @user.animals.each do |animal| %>
 
     <%= link_to "Edit this animal", edit_animal_path(animal) %>

@@ -1,4 +1,8 @@
 <h1> "show an animal and it's reason here after they create it" </h1>
 <%= @animal.name %>
-<%= @animal.reasons.comment%>
+<br><br>
+<% @animal.reasons.each do |element| %>
+
+<%= element.comment%>
+<%end%>
 
