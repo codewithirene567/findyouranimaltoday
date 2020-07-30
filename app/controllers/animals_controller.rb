@@ -32,15 +32,27 @@ class AnimalsController < ApplicationController
         #@reason = @animal.reasons.build(user_id: current_user.id)
     end
     def update
-        animal = Animal.find_by(id: params[:id])
-        animal.update(animal_params)
-        redirect_to animal_path(animal)
+        #animal = Animal.find_by(id: params[:id])
+        @animal.update(update_params)
+        reasons = Reason.where(animal_id: @animal.id)
+        reasons.each do |r|
+            r.update(comment:update_params[:comment])
+        end
+        redirect_to animal_path(@animal)
     end
     def destroy
-        Animal.find(params[:id]).destroy
-        redirect_to root_path
+        @animal = Animal.find(params[:id])
+        rea =  Reason.where(animal_id: @animal.id)
+        rea.each do |r|
+            r.destroy
+        end
+        @animal.destroy
+        redirect_to user_path(current_user.id)
     end
     private
+    def update_params
+        params.require(:animal).permit(:name, :comment)
+    end
     def animal_params
         params.require(:animal).permit(:name, :comment, reasons_attributes: [:comment])
     end

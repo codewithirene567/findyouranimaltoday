@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-    def new
+    before_action :set_up_users, :except => [:create]
+  def new
       @user = User.new
     end
 
@@ -13,8 +14,10 @@ class UsersController < ApplicationController
     end
 
     def show
-      @user = User.find_by(id: params[:id])
-      @name = @user.name
+      @user = current_user
+      #@user = User.find_by(id: params[:id])
+      @reasons = Reason.where(user_id:@user.id)
+      #@name = @user.name
     end
 
     def home
@@ -25,5 +28,8 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :password)
+    end
+    def set_up_users
+      @user = User.find_by(id: params[:id])
     end
 end
