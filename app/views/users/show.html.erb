@@ -2,14 +2,16 @@
 <h2> If this area is blank then it probably means you don't have any animals created yet</h2><br>
 
 <% current_user.animals.each do |animal| %>
+    <p>Name for this animal:</p>
     <%= animal.name%><br>
-<% animal.reasons.each do |reason| %><br>
+    <p>Reason why you said you liked it:</p>
+<% animal.reasons.each do |reason| %>
 
 <%=reason.words  %>
 <% end %><br><br>
 <%= link_to "Edit this animal", edit_animal_path(animal) %><br><br>
     
-<%= button_to "Delete Animal", animal_path(animal), method: :delete %>
+<%= button_to "Delete Animal", animal_path(animal), method: :delete %><br>
     
     <% end %>
 <%= link_to "Click here to see all animals ever created", animals_path %><br><br>
