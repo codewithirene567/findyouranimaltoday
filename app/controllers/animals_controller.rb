@@ -2,6 +2,7 @@ class AnimalsController < ApplicationController
     before_action :set_up_animal,  :except => [:create]
     def index
         @animals = Animal.all
+        @reasons = Reason.all
     end
     def new
         @animal = Animal.new
@@ -17,8 +18,8 @@ class AnimalsController < ApplicationController
        else
         render :new
        end
-       new_reason = Reason.new(user_id:current_user.id, animal_id:@animal.id, comment:@animal.comment)
-       new_reason.save!
+       #new_reason = Reason.new(user_id:current_user.id, animal_id:@animal.id, words:words)
+       #new_reason.save!
     end
     def show
         
@@ -36,7 +37,8 @@ class AnimalsController < ApplicationController
         @animal.update(update_params)
         reasons = Reason.where(animal_id: @animal.id)
         reasons.each do |r|
-            r.update(comment:update_params[:comment])
+            #r.update(comment:update_params[:comment])
+            r.update(words:update_params[:words])
         end
         redirect_to animal_path(@animal)
     end

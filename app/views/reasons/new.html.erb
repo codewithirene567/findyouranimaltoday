@@ -1,8 +1,9 @@
-<h1>"create reasons in a new action, type in reasons and then collection select for an animal"</h1>
-
+<h1>"create reasons in a new action, type in reasons and then collection select to link it to an animal you like"</h1>
+<h1>In this section type in a reason why you like the animal you made and select it form the drop down menu to associate the reason to that animal</h1>
 <%= form_for(@reason) do |f|%>
-    <%= f.label :comment %>
-    <%= f.text_field :comment%><br><br>
+    <p>Put your reason here</p>
+    <%= f.label :Reason %>
+    <%= f.text_field :words%><br><br>
     <%= f.collection_select :animal_id, Animal.all, :id, :name %>
 #create animals and just animals, reasons need to have a reason view that will just create reasons in a new action, type in reasons and then collection select
 <br><br><%= f.submit %>

@@ -1,11 +1,14 @@
 <h1> "animals name and reason people like it in a listed format;
 dog->user1 says they liked that animal because their tail wags " </h1>
 <%@animals.each do |animal| %>
-    <%= animal.name %>
+    <%= animal.name %><br>
     
     <% animal.reasons.each do |i| %>
-    <%= i.comment %>
-    <%end%>
+    <%= i.words %><br>
+    <%end%><br>
+
+
     <%end%><br><br>
-    
+
     <%= link_to "Back to your profile", user_path(current_user.id) %>
+    
