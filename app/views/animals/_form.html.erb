@@ -1,10 +1,22 @@
-<h1>Create a new Animal and any additional comment about them:</h1>
+<h1>A new Animal and any additional comment about them:</h1>
 
 <%= form_for(@animal) do |f|%>
     <%= f.label :name%>
     <%= f.text_field :name %><br><br>
     <%= f.label :comment %>
     <%= f.text_field :comment%><br><br>
+    <% if @animal.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@animal.errors.count, "error") %> prohibited this animal from being saved:
+      </h2>
 
+      <ul>
+      <% @animal.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 <%= f.submit %>
 <%end%>

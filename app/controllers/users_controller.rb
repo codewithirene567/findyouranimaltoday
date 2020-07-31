@@ -5,17 +5,20 @@ class UsersController < ApplicationController
     end
 
     def create
-      if (user = User.create(user_params))
-        session[:user_id] = user.id
-        redirect_to user_path(user)
+      @user = User.new(user_params)
+
+      if @user.valid?
+        @user = User.create(user_params)
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
       else
-        render 'sessions/new'
+        render 'users/new'
       end
     end
 
     def show
-      #@user = current_user
-      #@user = User.find_by(id: params[:id])
+      @user = current_user
+      @user = User.find_by(id: params[:id])
       
       #@animal = Animal.find(reasons.animal_id)
       #@name = @user.name

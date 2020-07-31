@@ -15,7 +15,7 @@ class ReasonsController < ApplicationController
       animal = Animal.find_by(id: params[:reason][:animal_id])
       reason = animal.reasons.build(reason_params)
       current_user.reasons << reason
-      #binding.pry
+      
       if reason.save
       #redirect_to animals_path
       redirect_to animal_reasons_path(animal.id)
@@ -25,9 +25,13 @@ class ReasonsController < ApplicationController
     end
 
     def index
-        @reasons = Reason.all
+        #@reasons = Reason.all
+        @reasons = current_user.reasons
         @animal = Animal.find_by(id: params[:animal_id])
-        reasons = Reason.find_by(id: params[:reason])
+        #reasons = Reason.find_by(id: params[:user_id][:words])
+        #@user = current_user
+        #binding.pry
+        #user = current_user.find_by(id: params[:reasons][:words])
          #need to find the animal that has an id of one then find all of the reasons that the animal has
     end
 

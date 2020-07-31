@@ -12,7 +12,8 @@ class AnimalsController < ApplicationController
     def create
         #binding.pry
        @animal = current_user.animals.build(animal_params)
-       if @animal.save
+       if @animal.valid?
+        @animal.save
             #new_reason = Reason.new(user_id:current_user.id, animal_id:5, comment: "This is our stati comment")
             #new_reason.save!
             redirect_to animal_path(@animal)
@@ -52,10 +53,10 @@ class AnimalsController < ApplicationController
     end
     private
     def update_params
-        params.require(:animal).permit(:name, :comment)
+        params.require(:animal).permit(:name, :comment, :words)
     end
     def animal_params
-        params.require(:animal).permit(:name, :comment, reasons_attributes: [:comment])
+        params.require(:animal).permit(:name, :comment, :words, reasons_attributes: [:words])
     end
     def set_up_animal
         @animal = Animal.find_by(id: params[:id])

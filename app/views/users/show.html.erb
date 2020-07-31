@@ -1,5 +1,5 @@
-<h1> Here are all of your animals so far </h1>
-<h2> If this area is blank then it probably means you don't have any animals created yet</h2><br>
+<h1> Here are all of your animals so far <%=current_user.name%>.</h1>
+<h2> If this area is blank then it probably means you don't have any animals created yet. You can change that by clicking a link below.</h2><br>
 
 <% current_user.animals.each do |animal| %>
     <p>Name for this animal:</p>
@@ -14,7 +14,9 @@
 <%= link_to "Edit this animal", edit_animal_path(animal) %><br><br>
   
 <%= button_to "Delete Animal", animal_path(animal), method: :delete %><br>
-<%= link_to "Click here to make a new reason why you like an animal and associate it to an animal", new_animal_reason_path(animal) %><br><br>   
+
+<%= link_to "Click here to make a new reason why you like an animal and associate it to an animal.", new_animal_reason_path(animal) %><br> 
+<h4>Note: Want to make a second reason? You can also click the above link to associate a new reason for the same animal.</h4>
     <% end %>
 <%= link_to "Click here to see all animals ever created", animals_path %><br><br>
 
