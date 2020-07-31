@@ -4,10 +4,17 @@ class ReasonsController < ApplicationController
         @reason = Reason.new
         @reason.build_animal
     end
+
     def create
-        @reason = Reason.create(reason_params)
-        redirect_to user_path(reason.user)
+      
+      if reason = Reason.create(reason_params)
+        reason.save
+      redirect_to animals_path
+      else
+       render 'reasons/new'
+      end
     end
+
     def index
         redirect_to animal_path
     end
