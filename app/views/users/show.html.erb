@@ -4,18 +4,20 @@
 <% current_user.animals.each do |animal| %>
     <p>Name for this animal:</p>
     <%= animal.name%><br>
+    <p>Additional comments for this animal:</p>
+    <%= animal.comment%><br>
     <p>Reason why you said you liked it:</p>
 <% animal.reasons.each do |reason| %>
 
 <%=reason.words  %>
 <% end %><br><br>
 <%= link_to "Edit this animal", edit_animal_path(animal) %><br><br>
-    
+  
 <%= button_to "Delete Animal", animal_path(animal), method: :delete %><br>
-    
+<%= link_to "Click here to make a new reason why you like an animal and associate it to an animal", new_animal_reason_path(animal) %><br><br>   
     <% end %>
 <%= link_to "Click here to see all animals ever created", animals_path %><br><br>
-<%= link_to "Click here to make a new reason why you like an animal and associate it to an animal", new_reason_path %><br><br>
+
 <%= link_to "Make a new animal", new_animal_path %><br><br>
 
 <%= link_to "Log Out", '/' %>

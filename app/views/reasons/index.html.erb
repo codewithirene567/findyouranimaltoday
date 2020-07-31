@@ -1,0 +1,8 @@
+<h1> Here is your new animal and all reasons why it is liked. </h1><br>
+<%= @animal.name%><br><br>
+<% @reasons.each do |reasons| %>
+    <%= reasons.words %>
+    <%end%><br><br>
+
+    <%= link_to "Click here to see all animals ever created", animals_path %><br><br>
+    <%= link_to "Back to your profile", user_path(current_user.id) %>

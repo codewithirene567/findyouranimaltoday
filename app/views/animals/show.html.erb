@@ -1,6 +1,6 @@
-<h1> "show an animal and it's reason here after they create it" </h1>
+<h1> Here is the animal you just created </h1>
 <%= @animal.name %>
 <br><br>
 <%=@animal.comment %><br><br>
-<%= link_to "Associate the animal to a reason you like it by clicking here.", new_reason_path %><br><br>
+<%= link_to "Associate the animal to a reason you like it by clicking here.", new_animal_reason_path(@animal) %><br><br><h1>new_reason_path</h1>
 <%= link_to "Back to your profile", user_path(current_user.id) %>

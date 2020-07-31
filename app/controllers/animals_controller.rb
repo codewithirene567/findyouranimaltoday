@@ -3,6 +3,7 @@ class AnimalsController < ApplicationController
     def index
         @animals = Animal.all
         @reasons = Reason.all
+        @users = User.all
     end
     def new
         @animal = Animal.new
@@ -26,7 +27,6 @@ class AnimalsController < ApplicationController
         @animal = Animal.find_by(id: params[:id])
         #@animal = Animal.find(params[:id])
         #@reason = @animal.reasons.build(user_id: current_user.id)
-        # animal GET    /animals/:id(.:format)             animals#show
     end
     def edit
         @animal = Animal.find_by(id: params[:id])
@@ -37,7 +37,6 @@ class AnimalsController < ApplicationController
         @animal.update(update_params)
         reasons = Reason.where(animal_id: @animal.id)
         reasons.each do |r|
-            #r.update(comment:update_params[:comment])
             r.update(words:update_params[:words])
         end
         redirect_to animal_path(@animal)

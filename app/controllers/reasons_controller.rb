@@ -2,7 +2,13 @@ class ReasonsController < ApplicationController
     def new
         
         @reason = Reason.new
-        #binding.pry
+        #animal = Animal.find_by(id: params[:animal_id])
+        #if Reason.includes(:animal_id)
+          #redirect_to new_animal_reason_path
+        #else
+        #  redirect_to animals_path
+        #end
+        #binding.pry #if else statemetn here for if it is nested 
     end
 
     def create
@@ -11,16 +17,21 @@ class ReasonsController < ApplicationController
       current_user.reasons << reason
       #binding.pry
       if reason.save
-      redirect_to animals_path
+      #redirect_to animals_path
+      redirect_to animal_reasons_path(animal.id)
       else
        render 'reasons/new'
       end
     end
 
     def index
-        redirect_to animal_path
+        @reasons = Reason.all
+        @animal = Animal.find_by(id: params[:animal_id])
+        reasons = Reason.find_by(id: params[:reason])
+         #need to find the animal that has an id of one then find all of the reasons that the animal has
     end
 
+    
     private
 
   def reason_params
