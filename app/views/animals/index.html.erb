@@ -1,10 +1,9 @@
-<h1> Here you can find all the animals' names and reason users liked it in a listed format.</h1>
+<h1> Here you can find all the animals' names and reason our users liked it.</h1>
     <%@animals.each do |animal| %> 
-       <h3><%=current_user.name%> says they liked the <%= animal.name %>.</h3>
-            <% animal.reasons.each do |i| %>
-            <h3>They said they liked it because <%= i.words %>.</h3>
-            <%end%><br>
-        <%end%>
+        <h3>People like the <%= animal.name %> because: </h3>
+        <% animal.reasons.each do |i| %>
+            <h3> - <%= i.words %></h3>
+        <%end%><br>
+    <%end%>
 
-    <%= link_to "Back to your profile", user_path(current_user.id) %>
-    
+        <%= link_to "Back to your profile", user_path(current_user.id) %>

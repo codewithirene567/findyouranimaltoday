@@ -2,9 +2,6 @@ class AnimalsController < ApplicationController
     before_action :set_up_animal,  :except => [:create]
     def index
         @animals = Animal.all
-        @reasons = Reason.all
-        @users = User.all
-       
     end
    
     
