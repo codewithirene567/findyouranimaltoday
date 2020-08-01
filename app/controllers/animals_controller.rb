@@ -4,14 +4,17 @@ class AnimalsController < ApplicationController
         @animals = Animal.all
         @reasons = Reason.all
         @users = User.all
+       
     end
+   
+    
     def new
         @animal = Animal.new
         #@category = Category.new
     end
     def create
         
-       
+       #binding.pry
        @animal = current_user.animals.build(animal_params)
        
        #binding.pry
