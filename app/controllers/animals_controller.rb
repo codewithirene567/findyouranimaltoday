@@ -1,5 +1,6 @@
 class AnimalsController < ApplicationController
     before_action :set_up_animal,  :except => [:create]
+    before_action :checked_log_in
     def index
         @animals = Animal.all
     end

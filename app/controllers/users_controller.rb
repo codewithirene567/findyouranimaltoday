@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_up_users, :except => [:create]
+    before_action :checked_log_in, :except => [:new, :create]
   def new
       @user = User.new
     end
@@ -33,6 +34,8 @@ class UsersController < ApplicationController
        hashed = BCrypt::Engine::hash_secret(password, salt)
       return nil unless (salt + hashed) == self.password_digest
      end
+
+     
     private
 
     def user_params

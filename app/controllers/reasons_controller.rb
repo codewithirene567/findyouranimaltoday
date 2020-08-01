@@ -1,5 +1,6 @@
 class ReasonsController < ApplicationController
-    def new
+  before_action :checked_log_in
+  def new
       animal = Animal.find_by(id: params[:animal_id])
         if animal
           @reason = animal.reasons.build
