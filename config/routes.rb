@@ -9,7 +9,7 @@ resources :sessions, only: [:new, :create, :destroy]
 resources :users, only: [:new, :create, :show]
 
 #resources :reasons, only: [:new, :create]
-
+resources :categories, only: [:new, :create, :show]
 
 end
 

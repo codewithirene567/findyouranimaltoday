@@ -5,6 +5,7 @@ class Animal < ApplicationRecord
     #animal foreign key belong to, category_id
     has_many :reasons
     has_many :users, through: :reasons
+    belongs_to :category
     #accepts_nested_attributes_for :reasons
 
     validates :name, presence: true

@@ -7,11 +7,14 @@ class AnimalsController < ApplicationController
     end
     def new
         @animal = Animal.new
-        
+        #@category = Category.new
     end
     def create
-        #binding.pry
+        
+       
        @animal = current_user.animals.build(animal_params)
+       
+       #binding.pry
        if @animal.valid?
         @animal.save
             #new_reason = Reason.new(user_id:current_user.id, animal_id:5, comment: "This is our stati comment")
@@ -60,8 +63,9 @@ class AnimalsController < ApplicationController
     end
     private
     
+    
     def animal_params
-        params.require(:animal).permit(:name, :comment)
+        params.require(:animal).permit(:name, :comment, :category_id)
     end
     def set_up_animal
         @animal = Animal.find_by(id: params[:id])
