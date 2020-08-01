@@ -1,5 +1,5 @@
 <h1>In this section type in a reason why you like the animal you made and select it form the drop down menu to associate the reason to that animal</h1>
-<%= form_for(@reason) do |f|%>
+<%= form_for([@reason.animal, @reason]) do |f|%>
     <p>Pick out an animal:</p>
     <%= f.collection_select :animal_id, Animal.all, :id, :name %>
     <p>Put your reason here:</p>

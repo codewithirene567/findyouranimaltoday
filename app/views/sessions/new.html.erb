@@ -1,4 +1,4 @@
-<h1> "place to log in" </h1>
+<h1>Log in here</h1>
 <%= form_tag('/sessions', method: :post) do %>
 
     <div class="form-group">
@@ -7,7 +7,7 @@
   
     <div class="form-group">
       <%= label_tag(:password, "Your password:") %>
-      <%= password_field_tag(:password_digest, nil, class: "form-control") %>
+      <%= password_field_tag(:password, nil, class: "form-control") %>
     </div><br>
   
     <div class="actions">

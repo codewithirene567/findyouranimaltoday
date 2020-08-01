@@ -35,12 +35,19 @@ class AnimalsController < ApplicationController
     end
     def update
         #animal = Animal.find_by(id: params[:id])
-        @animal.update(update_params)
-        reasons = Reason.where(animal_id: @animal.id)
-        reasons.each do |r|
-            r.update(words:update_params[:words])
-        end
+        @animal.update(animal_params)
+   if @animal.save
+
+        #reasons = Reason.where(animal_id: @animal.id)
+        #reasons.update(update_params)
+        #reasons.each do |r|
+        #    r.update(words:update_params[:words])
+        #end
+       
         redirect_to animal_path(@animal)
+   else
+    render 'animals/edit'
+   end
     end
     def destroy
         @animal = Animal.find(params[:id])
@@ -52,11 +59,9 @@ class AnimalsController < ApplicationController
         redirect_to user_path(current_user.id)
     end
     private
-    def update_params
-        params.require(:animal).permit(:name, :comment, :words)
-    end
+    
     def animal_params
-        params.require(:animal).permit(:name, :comment, :words, reasons_attributes: [:words])
+        params.require(:animal).permit(:name, :comment)
     end
     def set_up_animal
         @animal = Animal.find_by(id: params[:id])

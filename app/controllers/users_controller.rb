@@ -28,10 +28,15 @@ class UsersController < ApplicationController
       render 'users/homepage'
     end 
 
+     def authenticate(password)
+       salt = password_digest[0..28]
+       hashed = BCrypt::Engine::hash_secret(password, salt)
+      return nil unless (salt + hashed) == self.password_digest
+     end
     private
 
     def user_params
-      params.require(:user).permit(:name, :password)
+      params.require(:user).permit(:name, :password, :password_confirmation)
     end
     def set_up_users
       @user = User.find_by(id: params[:id])

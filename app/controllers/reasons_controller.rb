@@ -1,14 +1,12 @@
 class ReasonsController < ApplicationController
     def new
-        
-        @reason = Reason.new
-        #animal = Animal.find_by(id: params[:animal_id])
-        #if Reason.includes(:animal_id)
-          #redirect_to new_animal_reason_path
-        #else
-        #  redirect_to animals_path
-        #end
-        #binding.pry #if else statemetn here for if it is nested 
+      animal = Animal.find_by(id: params[:animal_id])
+        if animal
+          @reason = animal.reasons.build
+        else
+          @reason = Reason.new
+          redirect_to animals_path
+        end
     end
 
     def create
@@ -18,7 +16,7 @@ class ReasonsController < ApplicationController
       
       if reason.save
       #redirect_to animals_path
-      redirect_to animal_reasons_path(animal.id)
+      redirect_to animal_reasons_path(animal)
       else
        render 'reasons/new'
       end
@@ -26,8 +24,12 @@ class ReasonsController < ApplicationController
 
     def index
         #@reasons = Reason.all
-        @reasons = current_user.reasons
         @animal = Animal.find_by(id: params[:animal_id])
+        if @animal
+          @reasons = @animal.reasons
+        else
+          redirect_to user_path(current_user)
+        end
         #reasons = Reason.find_by(id: params[:user_id][:words])
         #@user = current_user
         #binding.pry
