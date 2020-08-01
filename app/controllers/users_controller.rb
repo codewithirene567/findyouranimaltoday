@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :set_up_users, :except => [:create]
-    before_action :checked_log_in, :except => [:new, :create]
+    before_action :checked_log_in, :except => [:new, :create, :home]
   def new
       @user = User.new
     end
