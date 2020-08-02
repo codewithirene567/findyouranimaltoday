@@ -13,15 +13,11 @@ class SessionsController < ApplicationController
      end
 
     def destroy
-        #if logged_in?
-        #session.clear
         session.delete("user_id")
         redirect_to new_session_path
-        #change route for log out link to destroy route
-        #end
     end
 
-    def omniauth #log users in with omniauth
+    def omniauth #logs users in with omniauth
         user = User.create_from_omniauth(auth)
         if user.valid?
             session[:user_id] = user.id
