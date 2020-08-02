@@ -3,7 +3,6 @@ class User < ApplicationRecord
     has_many :animals, through: :reasons
     has_secure_password
     #has_secure_password has a validation for password presence
-    
     validates :name, presence: true
 
     def self.create_from_omniauth(auth)

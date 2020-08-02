@@ -1,5 +1,19 @@
 <h1>To start off, make a new category for an animal</h1>
 <%= form_for(@category) do |f|%>
+    <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:
+      </h2>
+
+      <ul>
+      <% @category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 <%= f.label :"Write it here:" %>
 <%= f.text_field :value%><br><br>
 <%= f.submit %>
