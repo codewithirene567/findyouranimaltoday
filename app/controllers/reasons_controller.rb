@@ -15,7 +15,7 @@ class ReasonsController < ApplicationController
       #reason = animal.reasons.build(reason_params)
       
       reason = current_user.reasons.build(reason_params)
-      #binding.pry
+      
       #Reason.all.find_by(id: params[:animal_id])
       #current_user.reasons.animals << reason
       current_user.reasons << reason

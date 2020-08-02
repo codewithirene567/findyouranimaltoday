@@ -3,9 +3,11 @@ class User < ApplicationRecord
     has_many :animals, through: :reasons
     #has many animals is going to represent 
     has_secure_password
+    #has_securepassword has a validation for password presence
     #has_many :favorite_animals, through: :reasons, source: :animal
 
-    validates :name, uniqueness: true
+    #validates :name, uniqueness: true
     validates :name, presence: true
-    validates :password, presence: true
+    #validates :password, presence: true
+
 end
