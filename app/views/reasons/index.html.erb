@@ -1,8 +1,8 @@
-<h1> Here is your new animal and your reasons why you like the animals so far. </h1><br>
+<h1> Here is your new animal</h1><br>
 <%= @animal.name.capitalize%><br><br>
-<h2>Your reasons so far...</h2>
+<h2>The reasons people like that animal so far...</h2>
 <% @reasons.each do |reason| %>
-    <%= reason.words %><br>
+    - <%= reason.words %><br><br>
     <%end%><br><br>
     
     <%= link_to "Click here to see all animals ever created", animals_path %><br><br>

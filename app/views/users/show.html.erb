@@ -1,28 +1,37 @@
 <h1> Here are all of your animals so far <%=current_user.name%>.</h1>
-<h2> If this area is blank then it probably means you don't have any animals created yet. You can change that by clicking a link below.</h2><br>
+<h2> If the area down below is blank then it probably means you don't have any animals created yet.</h2>
+<h1> Directions for making an animal </h1>
+<h2> 1. Make sure you create a category first before you create a new animal! Otherwise the new animal won't know where to belong! </h2>
+<h2> 2. Then select a reason for the animal on the make a new animal link. </h2>
+<h2> 3. The animal will appear on your screen along with whatever reasons everybody gave about why they it! </h2><br>
+
+
 
 <% current_user.animals.each do |animal| %>
+   
     <p>Name for this animal:</p>
     <%= animal.name%><br>
-    <p>Additional comments for this animal:</p>
+    <p>Additional comments for this animal from everyone:</p>
     <%= animal.comment%><br>
-    <p>Reason why you said you liked it:</p>
-<% animal.reasons.each do |reason| %>
+    <p>Reason(s) why people have said they liked it:</p>
+      <%=animal.reasons.map { |reason| reason.words}.join(", ")%><br><br>
+    <%= link_to "Edit this animal's name or comment, and assign it a category.", edit_animal_path(animal) %><br><br>
+    
+    <%= button_to "Delete Animal", animal_path(animal), method: :delete %><br><br>
 
-<%=reason.words  %>
-<% end %><br><br>
-<%= link_to "Edit this animal", edit_animal_path(animal) %><br><br>
-  
-<%= button_to "Delete Animal", animal_path(animal), method: :delete %><br>
+    <%= link_to "Click here to make a new reason why you like an animal and associate it to an animal.", new_animal_reason_path(animal) %><br> 
 
-<%= link_to "Click here to make a new reason why you like an animal and associate it to an animal.", new_animal_reason_path(animal) %><br> 
-<h4>Note: Want to make a second reason? You can also click the above link to associate a new reason for the same animal.</h4>
-    <% end %>
-<%= link_to "Click here to see all animals ever created", animals_path %><br><br>
 
-<%= link_to "Make a new animal", new_animal_path %><br><br>
+    <h4> Reasons that you make from this page will be associated to your account and appear in this animal list. </h4>
+    <h4> Want to make a second reason? You can also click the above link to associate a new reason for the same animal.</h4>
+<% end %>
 
 <%= link_to "Make a category for an animal", new_category_path %><br><br>
+
+<%= link_to "Make a new animal and assign a category to it", new_animal_path %><br><br>
+
+
+<%= link_to "Click here to see all animals ever created by everybody", animals_path %><br><br>
 
 <%= link_to "Log Out", session_path, method:'delete' %><br>
 

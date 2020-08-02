@@ -7,8 +7,9 @@ class Animal < ApplicationRecord
     has_many :users, through: :reasons
     belongs_to :category
     #accepts_nested_attributes_for :reasons
-
+  
     validates :name, presence: true
+    validates :name, uniqueness: true
     validates :comment, presence: true
 
     scope :order_by_alphabetically, -> { order(name: :asc) }
