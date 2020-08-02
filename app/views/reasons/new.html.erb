@@ -5,20 +5,5 @@
     <p>Put your reason here:</p>
     <%= f.label :Reason %>
     <%= f.text_field :words%><br><br>
-
-    <% if @reason.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@reason.errors.count, "error") %> prohibited this reason from being saved:
-      </h2>
-
-      <ul>
-      <% @reason.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
     <br><br><%= f.submit %>
 <%end%>

@@ -20,8 +20,6 @@ Specs:
     validates :comment, presence: true
     From my user model: 
     validates :name, presence: true
-    From my reasons model:
-    validates :words, presence: true
     Categories model:
     validates :value, presence: true
 
