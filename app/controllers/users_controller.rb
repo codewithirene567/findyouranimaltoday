@@ -1,13 +1,13 @@
 class UsersController < ApplicationController
     before_action :set_up_users, :except => [:create]
     before_action :checked_log_in, :except => [:new, :create, :home]
-  def new
+    
+    def new
       @user = User.new
     end
 
     def create
       @user = User.new(user_params)
-
       if @user.valid?
         @user = User.create(user_params)
         session[:user_id] = @user.id
@@ -38,7 +38,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :password, :password_confirmation)
     end
+
     def set_up_users
       @user = User.find_by(id: params[:id])
     end
+    
 end
