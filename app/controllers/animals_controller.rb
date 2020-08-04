@@ -3,7 +3,7 @@ class AnimalsController < ApplicationController
     before_action :checked_log_in
     
     def index
-        @animals = Animal.all
+        @animals = Animal.search_for_animals(params[:name]) #strong params are only needed when we update or create things in the database
     end
    
     

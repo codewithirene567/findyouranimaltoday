@@ -1,5 +1,15 @@
-<h1> Here you can find all the animals' names and reason our users liked it.</h1>
-    <%@animals.each do |animal| %> 
+<h1> Here you can find all the animals' names and reason our users liked it. #because we aren't updating or creating info in a database</h1><br>
+<%= form_tag('/animals', method: :get) do %>
+    <div class="form-group">
+      <%= label_tag(:name, "The animal's name") %>
+      <%= text_field_tag(:name, nil, class: "form-control") %><br><br>
+        <div class="actions">
+        <%= submit_tag("Search") %>
+        </div>
+<%end%>
+  
+
+<%@animals.each do |animal| %> 
         <h3>People like the <%= animal.name %> because: </h3>
         <% animal.reasons.each do |i| %>
             <h3> - <%= i.words %></h3>
@@ -7,5 +17,3 @@
     <%end%>
 
     <%= link_to "Back to your profile", user_path(current_user.id) %>
-
-        
