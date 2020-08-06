@@ -6,7 +6,6 @@
 <h2> 3. The animal will appear on your screen along with whatever reasons everybody gave about why they it! </h2><br>
 
 
-
 <% current_user.animals.each do |animal| %>
    
     <p>Name for this animal:</p>
@@ -21,7 +20,6 @@
 
     <%= link_to "Click here to make a new reason why you like an animal and associate it to an animal.", new_animal_reason_path(animal) %><br> 
 
-
     <h4> Reasons that you make from this page will be associated to your account and appear in this animal list. </h4>
     <h4> Want to make a second reason? You can also click the above link to associate a new reason for the same animal.</h4>
 <% end %>
@@ -30,9 +28,7 @@
 
 <%= link_to "Make a new animal and assign a category to it", new_animal_path %><br><br>
 
-
 <%= link_to "Click here to see all animals ever created by everybody", animals_path %><br><br>
 
 <%= link_to "Log Out", session_path, method:'delete' %><br>
-
 

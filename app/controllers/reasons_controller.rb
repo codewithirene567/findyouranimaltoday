@@ -1,9 +1,9 @@
 class ReasonsController < ApplicationController
   before_action :checked_log_in
   def new
-      animal = Animal.find_by(id: params[:animal_id])
-        if animal
-          @reason = animal.reasons.build
+      @animal = Animal.find_by(id: params[:animal_id])
+        if @animal
+          @reason = @animal.reasons.build
         else
           @reason = Reason.new
           redirect_to animals_path
@@ -13,6 +13,8 @@ class ReasonsController < ApplicationController
     def create
       animal = Animal.find_by(id: params[:reason][:animal_id])
       reason = current_user.reasons.build(reason_params)
+
+      #reason = animal.reasons.build(reason_params)
       current_user.reasons << reason
         if reason.save
            redirect_to animal_reasons_path(animal)
