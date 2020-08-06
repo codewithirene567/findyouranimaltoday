@@ -18,12 +18,8 @@ class UsersController < ApplicationController
     end
 
     def show
-      
       @user = current_user
       @user = User.find_by(id: params[:id])
-      #@animal = Animal.find_by(id: params[:id])
-      #animal =  current_user.animals.find_by_id(9) 
-      #binding.pry
     end
 
     def home

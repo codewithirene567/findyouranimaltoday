@@ -1,6 +1,5 @@
 class User < ApplicationRecord
     has_many :reasons
-    #has_many :animals, through: :reasons
     has_many :animals, -> { distinct }, through: :reasons
     has_secure_password
     #has_secure_password has a validation for password presence
