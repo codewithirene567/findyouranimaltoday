@@ -4,12 +4,14 @@ class SessionsController < ApplicationController
     end
 
     def create
-         user = User.find_by(name: params[:name])
-         user = user.try(:authenticate, params[:password])
-         return render 'sessions/wrong_password' unless user
-         session[:user_id] = user.id
-         @user = user
-         redirect_to user_path(@user)
+        user = User.find_by(name: params[:name])
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
+            @user = user
+            redirect_to user_path(@user)
+        else
+            render 'sessions/wrong_password'
+        end   
      end
 
     def destroy
