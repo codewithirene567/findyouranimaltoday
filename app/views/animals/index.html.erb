@@ -1,7 +1,7 @@
-<h1> Here you can find all the animals' names and reason our users liked it. #because we aren't updating or creating info in a database</h1><br>
+<h1> Here you can find all the animals' names and reason our users liked it.</h1><br>
 <%= form_tag('/animals', method: :get) do %>
     <div class="form-group">
-      <%= label_tag(:name, "The animal's name") %>
+      <%= label_tag(:name, "Search by animal name here") %>
       <%= text_field_tag(:name, nil, class: "form-control") %><br><br>
         <div class="actions">
         <%= submit_tag("Search") %>

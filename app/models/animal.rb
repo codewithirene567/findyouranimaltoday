@@ -13,7 +13,7 @@ class Animal < ApplicationRecord
 
     def self.search_for_animals(search)
         if !search.blank? #if we got something then search
-           Animal.where("name like ?", "%#{search}%") #find by only ever returns one thing
+           Animal.where("name like ?", "%#{search}%")
         else
            Animal.all
         end
