@@ -3,7 +3,14 @@ class AnimalsController < ApplicationController
     before_action :checked_log_in
     
     def index
-        @animals = Animal.search_for_animals(params[:name]) #strong params are only needed when we update or create things in the database
+       #binding.pry
+         #strong params are only needed when we update or create things in the database
+        @category = Category.find_by(id: params[:category_id])
+        if @category
+            @animals = @category.animals
+        else
+            @animals = Animal.search_for_animals(params[:name])
+        end
     end
    
     

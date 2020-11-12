@@ -6,16 +6,17 @@ class ReasonsController < ApplicationController
           @reason = @animal.reasons.build
         else
           @reason = Reason.new
-          redirect_to animals_path
         end
     end
 
     def create
-      animal = Animal.find_by(id: params[:reason][:animal_id])
-      reason = current_user.reasons.build(reason_params)
-      current_user.reasons << reason
+     #binding.pry
+      #animal = Animal.find_by(id: params[:animal_id])
+      #reason = animal.reasons.build(reason_params)
+      reason = Reason.new(reason_params) 
+      reason.user=current_user
         if reason.save
-           redirect_to animal_reasons_path(animal)
+           redirect_to reasons_path
         else
            render 'reasons/new'
         end
