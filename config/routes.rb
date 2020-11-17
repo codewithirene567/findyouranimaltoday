@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :reasons, only: [:new, :create, :index] 
   end
 
-resources :sessions, only: [:new, :create, :destroy]
+resources :sessions, only: [:new, :create, :destroy, :show]
 
 resources :users, only: [:new, :create, :show]
 
