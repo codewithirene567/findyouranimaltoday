@@ -9,6 +9,7 @@ class AnimalsController < ApplicationController
     
     def new
         @animal = Animal.new
+        #brand new comment
     end
 
     def create
